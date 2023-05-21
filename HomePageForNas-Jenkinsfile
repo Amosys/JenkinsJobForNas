@@ -23,6 +23,7 @@ pipeline {
 
     stage('Build') {
       steps {
+	sh 'pwd'
         sh '''cp ./JenkinsJobForNas/HomePageForNas.sh ./HomePageForNas-frontend
 cd ./HomePageForNas-frontend
 chmod +x ./JenkinsJobForNas/HomePageForNas.sh
