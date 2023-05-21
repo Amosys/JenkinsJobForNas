@@ -4,7 +4,7 @@ pipeline {
     stage('Prepare') {
       steps {
         cleanWs(deleteDirs: true)
-	sh 'rm ~/workspace/cache/* -rf'
+	sh 'rm /var/jenkins_home/caches/* -rf'
       }
     }
 
