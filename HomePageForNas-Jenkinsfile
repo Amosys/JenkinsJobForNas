@@ -10,23 +10,33 @@ pipeline {
 
     stage('Pull') {
       steps {
+          sh '''
+	  	mkdir HomePageForNas-frontend
+		cd HomePageForNas-frontend
+	  '''
           git(url: 'https://github.com/Amosys/HomePageForNas-frontend.git', branch: 'master', changelog: true)
+	  sh 'cd ..'
 
+	  
+          sh '''
+	  	mkdir JenkinsJobForNas
+		cd JenkinsJobForNas
+	  '''
           git(url: 'https://github.com/Amosys/JenkinsJobForNas.git', branch: 'main', changelog: true)
-
+	  sh 'cd ..'
       }
     }
 
     stage('Build') {
       steps {
 	sh 'pwd'
-        sh '''cp ./JenkinsJobForNas/HomePageForNas.sh ./HomePageForNas-frontend
-cd ./HomePageForNas-frontend
-chmod +x ./JenkinsJobForNas/HomePageForNas.sh
-./HomePageForNas.sh
-cd ..
+        sh '''	cp ./JenkinsJobForNas/HomePageForNas.sh ./HomePageForNas-frontend
+		cd ./HomePageForNas-frontend
+		chmod +x ./JenkinsJobForNas/HomePageForNas.sh
+		./HomePageForNas.sh
+		cd ..
 
-'''
+		'''
       }
     }
 
