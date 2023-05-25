@@ -10,13 +10,9 @@ pipeline {
 
     stage('Pull') {
       steps {
-        ws(dir: 'HomePageForNas-frontend') {
           git(url: 'https://github.com/Amosys/HomePageForNas-frontend.git', branch: 'master', changelog: true)
-        }
 
-        ws(dir: 'JenkinsJobForNas') {
           git(url: 'https://github.com/Amosys/JenkinsJobForNas.git', branch: 'main', changelog: true)
-        }
 
       }
     }
